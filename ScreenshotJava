@@ -1,0 +1,85 @@
+package screenShotJava;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Date;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.io.FileHandler;
+
+public class JavaScreenshot {
+
+	public static void main(String[] args) throws WebDriverException, IOException {
+		
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Geeks4Learning\\OneDrive\\Desktop\\ChromeDriver\\chromedriver.exe");
+
+		WebDriver driver= new ChromeDriver();
+		String baseURL = "https://petstore.octoperf.com";
+	
+		driver.get(baseURL);
+		driver.manage().window().maximize();
+		
+		
+		Date currentdate = new Date();
+		String screenshotfiledate = currentdate.toString().replace(" ", "-").replace(":", "-");
+		
+		TakesScreenshot  screenshotFile01 = ((TakesScreenshot) driver);
+	    FileHandler.copy(screenshotFile01.getScreenshotAs(OutputType.FILE), 
+	    		new File("C:\\Selenium\\" + screenshotfiledate + "-screen01.png"));
+		
+		//Click on enter 
+	    driver.findElement(By.xpath("/html/body/div/p[1]/a")).click();
+	    
+	    Date currentdate1= new Date();
+		String screenshotfiledate2 = currentdate1.toString().replace(" ", "-").replace(":", "-");
+	    TakesScreenshot  screenshotFile2 = ((TakesScreenshot) driver);
+	    FileHandler.copy(screenshotFile2.getScreenshotAs(OutputType.FILE), 
+	    		new File("C:\\Selenium\\" + screenshotfiledate2 + "-screen01.png"));
+	    
+	  //click on sign in 
+		driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/a[2]")).click();
+	    
+		Date currentdate3 = new Date();
+		String screenshotfiledate3 = currentdate3.toString().replace(" ", "-").replace(":", "-");
+		TakesScreenshot  screenshotFile3 = ((TakesScreenshot) driver);
+	    FileHandler.copy(screenshotFile3.getScreenshotAs(OutputType.FILE), 
+	    		new File("C:\\Selenium\\" + screenshotfiledate3 + "-screen01.png"));
+	    
+	    
+	    //Enter Username 
+	    driver.findElement(By.xpath("/html/body/div[2]/div/form/p[2]/input[1]")).sendKeys("Ethan786");
+	
+	    //clear password
+	    driver.findElement(By.xpath("//*[@id=\"Catalog\"]/form/p[2]/input[2]")).clear();
+	    
+	    // enter new password 
+	    driver.findElement(By.xpath("//*[@id=\"Catalog\"]/form/p[2]/input[2]")).sendKeys("@Vandal786");
+	  
+	    
+	    Date currentdate4 = new Date();
+		String screenshotfiledate4 = currentdate4.toString().replace(" ", "-").replace(":", "-");
+		TakesScreenshot  screenshotFile4 = ((TakesScreenshot) driver);
+	    FileHandler.copy(screenshotFile4.getScreenshotAs(OutputType.FILE), 
+	    		new File("C:\\Selenium\\" + screenshotfiledate4 + "-screen01.png"));
+	    
+	    //click on signIn
+		driver.findElement(By.xpath("//*[@id=\"Catalog\"]/form/input")).click();
+	
+		Date currentdate5 = new Date();
+		String screenshotfiledate5 = currentdate5.toString().replace(" ", "-").replace(":", "-");
+		TakesScreenshot  screenshotFile5 = ((TakesScreenshot) driver);
+	    FileHandler.copy(screenshotFile5.getScreenshotAs(OutputType.FILE), 
+	    		new File("C:\\Selenium\\" + screenshotfiledate5 + "-screen01.png"));
+	
+	
+	driver.close();
+	
+	}
+
+}
